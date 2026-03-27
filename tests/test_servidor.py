@@ -10,7 +10,7 @@ import asyncio
 class TestWebSocketServer(tornado.testing.AsyncHTTPTestCase):
     def get_app(self):
         dir_atual = os.path.dirname(os.path.abspath(__file__))
-        dir_web = os.path.join(dir_atual, "..", "cliente_web")
+        dir_web = os.path.join(dir_atual, "..", "clientes", "web")
         return tornado.web.Application([
             (r"/chat", ChatHandler),
             (r"/(.*)", tornado.web.StaticFileHandler, {"path": dir_web, "default_filename": "index.html"}),

@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import AsyncMock, patch
 import asyncio
-from cliente_console.cliente import receber_mensagens, ler_terminal
+from clientes.console import receber_mensagens, ler_terminal
 
 @pytest.mark.asyncio
 async def test_receber_mensagens():

@@ -14,8 +14,8 @@ O chat agora é gerido num formato orientado a eventos no clássico Loop (`IOLoo
 ## 📂 Estrutura de Arquivos
 
 * **`backend/`**: Contém o `servidor.py`, que roda o servidor WebSocket Tornado.
-* **`cliente_console/`**: O cliente Python Terminal em si usando `websocket_connect()`.
-* **`cliente_web/`**: A bela Interface Gráfica Glassmorphism provida pelo próprio Tornado no Root URL.
+* **`clientes/console.py`**: O cliente Python Terminal em si usando `websocket_connect()`.
+* **`clientes/web/`**: A bela Interface Gráfica Glassmorphism provida pelo próprio Tornado no Root URL.
 
 ## 🚀 Como Executar
 
@@ -34,7 +34,7 @@ python -m backend.servidor
 ```
 **Terminal 2:** Abra o navegador em `http://localhost:8080/` OU execute a CLI local:
 ```bash
-python -m cliente_console.cliente
+python -m clientes.console
 ```
 
 ## 🧪 Validando a Qualidade (Testes)
@@ -44,6 +44,6 @@ O framework de testes está suportado via `pytest` com Mocks de terminal de rede
 Para executa-los localmente:
 ```bash
 pip install pytest pytest-cov pytest-asyncio
-pytest tests/ --cov=backend --cov=cliente_console
+pytest tests/ --cov=backend --cov=clientes.console
 ```
 *A GitHub Action implementada atestará o Deploy Continuamente após cada envio `Push` pro main.*
