@@ -1,12 +1,11 @@
-import os
 import asyncio
-import tornado.web
-import tornado.websocket
-import tornado.ioloop
 from logging import Logger
 
+import tornado.ioloop
+import tornado.websocket
+
+from logger import obter_logger
 from protocol import ChatMessage
-from logger import configurar_logger, obter_logger
 
 log_servidor: Logger = obter_logger("Servidor")
 
@@ -50,21 +49,3 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
             except Exception as e:
                 log_servidor.error(f"Erro no terminal do servidor: {e}")
                 break
-
-def iniciar_servidor() -> None:
-    dir_atual: str = os.path.dirname(os.path.abspath(__file__))
-    dir_web: str = os.path.join(dir_atual, "clientes", "web")
-    
-    app: tornado.web.Application = tornado.web.Application([
-        (r"/chat", ChatHandler),
-        (r"/(.*)", tornado.web.StaticFileHandler, {"path": dir_web, "default_filename": "index.html"}),
-    ])
-    porta: int = 8080
-    app.listen(porta)
-    log_servidor.info(f"Escutando porta {porta} em ws://localhost:{porta}/chat")
-    log_servidor.info(f"🚀 Interface Web GUI rodando em http://localhost:{porta}")
-    tornado.ioloop.IOLoop.current().start()
-
-if __name__ == "__main__":
-    configurar_logger()
-    iniciar_servidor()

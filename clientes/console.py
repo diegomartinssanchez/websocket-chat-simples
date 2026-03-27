@@ -1,8 +1,10 @@
 import asyncio
 from logging import Logger
-from tornado.websocket import websocket_connect, WebSocketClientConnection
-from protocol import ChatMessage
+
+from tornado.websocket import WebSocketClientConnection, websocket_connect
+
 from logger import configurar_logger, obter_logger
+from protocol import ChatMessage
 
 log_cliente: Logger = obter_logger("Cliente")
 

@@ -1,11 +1,12 @@
+import asyncio
+import json
 import os
+
 import tornado.testing
 import tornado.web
 import tornado.websocket
-import json
+
 from servidor import ChatHandler
-from protocol import ChatMessage
-import asyncio
 
 class TestWebSocketServer(tornado.testing.AsyncHTTPTestCase):
     def get_app(self):
