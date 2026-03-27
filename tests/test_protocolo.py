@@ -1,5 +1,5 @@
 import pytest
-from protocol import ChatMessage
+from protocolo import ChatMessage
 
 def test_codificar():
     msg = ChatMessage(remetente="Teste", conteudo="Olá")

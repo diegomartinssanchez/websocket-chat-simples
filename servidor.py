@@ -5,7 +5,7 @@ from tornado.ioloop import IOLoop
 from tornado.websocket import WebSocketHandler
 
 from logger import obter_logger
-from protocol import ChatMessage
+from protocolo import ChatMessage
 
 log_servidor: Logger = obter_logger("Servidor")
 
