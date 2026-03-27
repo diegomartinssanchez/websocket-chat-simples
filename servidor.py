@@ -1,15 +1,15 @@
 import asyncio
 from logging import Logger
 
-import tornado.ioloop
-import tornado.websocket
+from tornado.ioloop import IOLoop
+from tornado.websocket import WebSocketHandler
 
 from logger import obter_logger
 from protocol import ChatMessage
 
 log_servidor: Logger = obter_logger("Servidor")
 
-class ChatHandler(tornado.websocket.WebSocketHandler):
+class ChatHandler(WebSocketHandler):
     entrada_ativa: bool
 
     def check_origin(self, origin: str) -> bool:
@@ -19,7 +19,7 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
         log_servidor.info("Conectado com um cliente WebSocket!")
         self.entrada_ativa = True
         # Inicia a leitura assíncrona do terminal - agenda na IOLoop
-        tornado.ioloop.IOLoop.current().add_callback(self.ler_terminal)
+        IOLoop.current().add_callback(self.ler_terminal)
 
     def on_message(self, message: str | bytes) -> None:
         if not message:
