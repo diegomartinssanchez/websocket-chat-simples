@@ -53,7 +53,7 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
 
 def iniciar_servidor() -> None:
     dir_atual: str = os.path.dirname(os.path.abspath(__file__))
-    dir_web: str = os.path.join(dir_atual, "..", "clientes", "web")
+    dir_web: str = os.path.join(dir_atual, "clientes", "web")
     
     app: tornado.web.Application = tornado.web.Application([
         (r"/chat", ChatHandler),

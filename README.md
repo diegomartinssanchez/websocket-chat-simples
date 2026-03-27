@@ -13,7 +13,7 @@ O chat agora é gerido num formato orientado a eventos no clássico Loop (`IOLoo
 
 ## 📂 Estrutura de Arquivos
 
-* **`backend/`**: Contém o `servidor.py`, que roda o servidor WebSocket Tornado.
+* **`servidor.py`**: O arquivo de backend na raiz que Roda o servidor WebSocket Tornado.
 * **`clientes/console.py`**: O cliente Python Terminal em si usando `websocket_connect()`.
 * **`clientes/web/`**: A bela Interface Gráfica Glassmorphism provida pelo próprio Tornado no Root URL.
 
@@ -30,7 +30,7 @@ Com a nova arquitetura de pacotes e a presença do `__init__.py`, executamos a p
 
 **Terminal 1:**
 ```bash
-python -m backend.servidor
+python servidor.py
 ```
 **Terminal 2:** Abra o navegador em `http://localhost:8080/` OU execute a CLI local:
 ```bash

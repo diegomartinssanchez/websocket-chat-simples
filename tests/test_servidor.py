@@ -3,7 +3,7 @@ import tornado.testing
 import tornado.web
 import tornado.websocket
 import json
-from backend.servidor import ChatHandler
+from servidor import ChatHandler
 from protocol import ChatMessage
 import asyncio
 
