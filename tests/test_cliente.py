@@ -1,10 +1,7 @@
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'cliente_console'))
 import pytest
 from unittest.mock import AsyncMock, patch
 import asyncio
-from cliente import receber_mensagens, ler_terminal
+from cliente_console.cliente import receber_mensagens, ler_terminal
 
 @pytest.mark.asyncio
 async def test_receber_mensagens():

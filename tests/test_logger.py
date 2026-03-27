@@ -1,8 +1,5 @@
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'backend'))
 import logging
-from logger import configurar_logger, obter_logger
+from backend.logger import configurar_logger, obter_logger
 
 def test_configurar_logger():
     configurar_logger()

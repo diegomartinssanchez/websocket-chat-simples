@@ -26,13 +26,15 @@ pip install -r requirements.txt
 ```
 
 ### 2. Inicie o Servidor e o Client
+Com a nova arquitetura de pacotes e a presença do `__init__.py`, executamos a partir da raiz do repositório garantindo que as bibliotecas cruzem de forma correta (`-m`).
+
 **Terminal 1:**
 ```bash
-cd backend && python servidor.py
+python -m backend.servidor
 ```
-**Terminal 2:** Abra o navegador em `http://localhost:8080/` OU execute local:
+**Terminal 2:** Abra o navegador em `http://localhost:8080/` OU execute a CLI local:
 ```bash
-cd cliente_console && python cliente.py
+python -m cliente_console.cliente
 ```
 
 ## 🧪 Validando a Qualidade (Testes)
