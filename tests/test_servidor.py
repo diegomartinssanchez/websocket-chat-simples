@@ -4,7 +4,7 @@ import tornado.web
 import tornado.websocket
 import json
 from backend.servidor import ChatHandler
-from shared.protocol import ChatMessage
+from protocol import ChatMessage
 import asyncio
 
 class TestWebSocketServer(tornado.testing.AsyncHTTPTestCase):
