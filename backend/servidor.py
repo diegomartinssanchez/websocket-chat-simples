@@ -5,8 +5,8 @@ import tornado.websocket
 import tornado.ioloop
 from logging import Logger
 
-from backend.protocol import ChatMessage
-from backend.logger import configurar_logger, obter_logger
+from shared.protocol import ChatMessage
+from shared.logger import configurar_logger, obter_logger
 
 log_servidor: Logger = obter_logger("Servidor")
 

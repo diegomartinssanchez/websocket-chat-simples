@@ -1,5 +1,5 @@
 import logging
-from backend.logger import configurar_logger, obter_logger
+from shared.logger import configurar_logger, obter_logger
 
 def test_configurar_logger():
     configurar_logger()

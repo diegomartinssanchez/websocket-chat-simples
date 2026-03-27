@@ -4,11 +4,11 @@ import tornado.web
 import tornado.websocket
 import json
 from backend.servidor import ChatHandler
+from shared.protocol import ChatMessage
 import asyncio
 
 class TestWebSocketServer(tornado.testing.AsyncHTTPTestCase):
     def get_app(self):
-        # Moca o diretório web para o StaticFileHandler
         dir_atual = os.path.dirname(os.path.abspath(__file__))
         dir_web = os.path.join(dir_atual, "..", "cliente_web")
         return tornado.web.Application([
@@ -17,12 +17,22 @@ class TestWebSocketServer(tornado.testing.AsyncHTTPTestCase):
         ])
 
     @tornado.testing.gen_test
-    async def test_websocket_conexao(self):
+    async def test_websocket_conexao_e_mensagem(self):
         ws_url = "ws://localhost:" + str(self.get_http_port()) + "/chat"
         ws_client = await tornado.websocket.websocket_connect(ws_url)
         
+        # Test valid message processing
         payload = json.dumps({"remetente": "TestClient", "conteudo": "Ping"})
         await ws_client.write_message(payload)
         
+        # Wait a tick so the server processes it
+        await asyncio.sleep(0.1)
+        
+        # Test empty message
+        await ws_client.write_message("")
+        await asyncio.sleep(0.1)
+        
         ws_client.close()
-        assert True, "Conexão de teste finalizou limpa"
+        await asyncio.sleep(0.1)
+        # Should cleanly finish
+        assert True
