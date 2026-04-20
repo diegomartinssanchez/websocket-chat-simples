@@ -30,7 +30,7 @@ Com a nova arquitetura de pacotes e a presença do `__init__.py`, executamos a p
 
 **Terminal 1:**
 ```bash
-python servidor.py
+python main.py
 ```
 **Terminal 2:** Abra o navegador em `http://localhost:8080/` OU execute a CLI local:
 ```bash
