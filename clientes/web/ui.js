@@ -1,6 +1,13 @@
 const chatMessages = document.getElementById("chat-messages");
 const statusIndicator = document.getElementById("status-indicator");
 const statusText = document.getElementById("status-text");
+const roomLabel = document.getElementById("room-label");
+
+export function updateRoomLabel(sala) {
+    if (roomLabel) {
+        roomLabel.textContent = `Sala: ${sala}`;
+    }
+}
 
 export function updateStatus(connected, text) {
     if (connected) {

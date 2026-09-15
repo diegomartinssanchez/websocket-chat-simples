@@ -1,4 +1,4 @@
-import { addMessage, updateStatus } from './ui.js';
+import { addMessage, updateRoomLabel, updateStatus } from './ui.js';
 
 const params = new URLSearchParams(window.location.search);
 const sala = params.get('sala') || 'geral';
@@ -6,6 +6,7 @@ const wsUrl = `ws://${window.location.host}/chat?sala=${encodeURIComponent(sala)
 let ws;
 
 export function connect() {
+    updateRoomLabel(sala);
     ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {
