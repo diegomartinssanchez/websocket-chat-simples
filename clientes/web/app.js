@@ -12,12 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (texto) {
             const payload = sendMessage("Web Client", texto);
             if (payload) {
-                addMessage(payload.remetente, payload.conteudo, "cliente");
                 messageInput.value = "";
             }
         }
     });
 
-    // Inicia a conexão
     connect();
 });

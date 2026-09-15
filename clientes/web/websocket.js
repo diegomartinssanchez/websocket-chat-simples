@@ -1,14 +1,16 @@
 import { addMessage, updateStatus } from './ui.js';
 
-const wsUrl = `ws://${window.location.host}/chat`;
+const params = new URLSearchParams(window.location.search);
+const sala = params.get('sala') || 'geral';
+const wsUrl = `ws://${window.location.host}/chat?sala=${encodeURIComponent(sala)}`;
 let ws;
 
 export function connect() {
     ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {
-        updateStatus(true, "Conexão Instanciada");
-        addMessage("Sistema", "Conexão estabalecida com o Tornado via WebSockets nativos.", "servidor");
+        updateStatus(true, `Conectado na sala "${sala}"`);
+        addMessage("Sistema", `Conexão estabelecida com a sala "${sala}" via WebSockets nativos.`, "servidor");
     };
 
     ws.onmessage = (event) => {
@@ -22,7 +24,7 @@ export function connect() {
 
     ws.onclose = () => {
         updateStatus(false, "Offline (Tentando reconectar...)");
-        addMessage("Sistema", "Conexão perdida. Reconectando em 3 Segundos...", "servidor");
+        addMessage("Sistema", `Conexão perdida na sala "${sala}". Reconectando em 3 segundos...`, "servidor");
         setTimeout(connect, 3000);
     };
 
