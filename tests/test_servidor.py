@@ -2,6 +2,7 @@ import asyncio
 import json
 import os
 
+import pytest
 import tornado.testing
 import tornado.web
 import tornado.websocket
